@@ -136,12 +136,14 @@
   // 2.引入swiper.css
   import 'swiper/dist/css/swiper.min.css'
   import ShopList from '../../components/ShopList/ShopList'
+  import { reqAddress } from '../../api'
+
   export default {
     name: 'MSite',
     components: {
       ShopList
     },
-    mounted() {
+    async mounted() {
       //轮播图代码
       const mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal', // 垂直切换选项 vertical   horizontal：横向切换
@@ -158,6 +160,10 @@
           disableOnInteraction: false,
         },
       })
+
+      //发送ajax 请求位置信息
+      const result =await reqAddress(40.10038,116.36867)
+      console.log(result)
     },
     data () {
       return {}
