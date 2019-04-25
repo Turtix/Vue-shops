@@ -7,23 +7,39 @@ import Login from '../pages/Login/Login'
 export default [
   {
     path: '/msite',
-    component: MSite
+    component: MSite,
+    // 路由元信息  决定是否显示底部信息
+    meta: {
+      isShowFooter: true
+    }
   },
   {
     path: '/search',
-    component: Search
+    component: Search,
+    meta: {
+      isShowFooter: true
+    }
   },
   {
     path: '/order',
-    component: Order
+    component: Order,
+    meta: {
+      isShowFooter: true
+    }
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile,
+    meta: {
+      isShowFooter: true
+    }
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
+    meta: {
+      isShowFooter: false
+    }
   },
   {
     path: '/',
