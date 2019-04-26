@@ -33,6 +33,7 @@ export default {
     // 2. 根据结果, 提交mutation
     if (result.code === 0) {
       const newShopList = result.data
+      // console.log(newShopList)
       commit(RECEIVE_SHOPS, newShopList)
     }
   }
