@@ -2,13 +2,12 @@
 import axios from 'axios'
 
 export default function ajax (url, data = {}, method = 'GET') {
-
   // 请求方式转换成大写
   method = method.toUpperCase()
 
   // 为了不在外面处理异常  可以包一层promise对象
   // 外面promise  会将里面promise的返回值作为自己的返回值返回
-  /*return new Promise((resolve, reject) => {
+  /* return new Promise((resolve, reject) => {
     // 执行异步ajax请求
     let promise = null
     if (method === 'GET') {
@@ -29,8 +28,7 @@ export default function ajax (url, data = {}, method = 'GET') {
       .catch((err) => {
         console.log('请求失败' + err.message)
       })
-  })*/
-
+  }) */
   // 可以简写如下
   let promise = null
   if (method === 'GET') {

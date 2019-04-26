@@ -6,18 +6,17 @@
 </template>
 
 <script>
-import Vue from 'vue'
+
 import FooterGuide from './components/FooterGuide/FooterGuide'
-import Header from './components/Header/Header'
-import Star from './components/Star/Star'
-// 注册全局组件
-Vue.component('Header',Header)
-Vue.component('Star',Star)
 
 export default {
   name: 'App',
   components: {
     FooterGuide
+  },
+  mounted () {
+    // 保证每次刷新页面时,都会得到保存的用户数据
+    this.$store.dispatch('getUser')
   }
 }
 </script>

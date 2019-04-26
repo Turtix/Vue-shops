@@ -6,5 +6,7 @@ export default {
   // 分类列表
   categories: [],
   // 商铺列表信息
-  shopList: []
+  shopList: [],
+  // 用户信息
+  user: {}
 }
