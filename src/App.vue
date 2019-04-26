@@ -15,6 +15,8 @@ export default {
     FooterGuide
   },
   mounted () {
+    // 获取地理位置信息
+    this.$store.dispatch('getAddress')
     // 保证每次刷新页面时,都会得到保存的用户数据
     this.$store.dispatch('getUser')
   }

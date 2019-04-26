@@ -5,7 +5,7 @@ import ajax from './ajax'
 const BASE = '/api'
 
 /* 根据经纬度获位置详情   param参数需要自己拼串 */
-export const reqAddress = (latitude, longitude) => ajax(BASE + `/position/${latitude}, ${longitude}`)
+export const reqAddress = (latitude, longitude) => ajax(BASE + `/position/${latitude},${longitude}`)
 
 /* 获取视频分类列表 */
 export const reqCategories = () => ajax(BASE + '/index_category')

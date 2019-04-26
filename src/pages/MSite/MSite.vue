@@ -78,7 +78,7 @@
       /*//发送ajax 请求位置信息
       const result =await reqAddress(40.10038,116.36867)
       console.log(result)*/
-      this.$store.dispatch('getAddress')
+      // this.$store.dispatch('getAddress')
       this.$store.dispatch('getCategorys')
 
     },
