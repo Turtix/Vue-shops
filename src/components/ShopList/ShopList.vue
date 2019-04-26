@@ -22,7 +22,7 @@
                   <span class="star-item half"></span>
                   <span class="star-item off"></span>
                 </div>-->
-                <Star :starCount="shop.rating"/>
+                <Star :starCount="shop.rating" :size="24"/>
                 <div class="rating_section">
                   {{shop.rating}}
                 </div>
@@ -67,9 +67,6 @@
     name: 'ShopList',
     data () {
       return {}
-    },
-    components: {
-      Star
     },
     computed: {
       ...mapState(['shopList'])

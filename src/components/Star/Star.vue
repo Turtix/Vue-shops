@@ -1,6 +1,6 @@
 <template>
-  <div class="star star-24">
-    <span class="star-item on" v-for="(score,index) in scs" :key="index" :class="score"></span>
+  <div class="star" :class="'star-'+size">
+    <span class="star-item on" v-for="(sc,index) in scs" :key="index" :class="sc"></span>
     <!--<span class="star-item on"></span>
     <span class="star-item on"></span>
     <span class="star-item half"></span>
@@ -14,7 +14,10 @@
   const CLASS_OFF = 'off'
   export default {
     name: 'Star',
-    props: ['starCount'],
+    props: {
+      starCount: Number,
+      size: Number
+    },
     computed:{
       scs() {
         //小星星代码
