@@ -1,5 +1,5 @@
 <template>
-  <div class="shop_container">
+  <div class="shop_container" @click="$router.push('/shop')">
     <ul class="shop_list" v-if="shopList.length">
       <li class="shop_li border-1px" v-for="(shop) in shopList" :key="shop.id">
         <a>

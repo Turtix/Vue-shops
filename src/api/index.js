@@ -27,3 +27,13 @@ export const reqUserInfo = () => ajax(BASE + '/userinfo')
 
 /* 退出登录 */
 export const reqLogout = () => ajax(BASE + '/logout')
+
+/* mock模拟获取goods,ratings,info数据 发送的ajax请求会被mock拦截 ,并返回模拟数据 */
+/* 获取商品列表  */
+export const reqGoods = () => ajax('/goods')
+
+/* 获取评价列表 */
+export const reqRatings = () => ajax('/ratings')
+
+/* 获取商家信息 */
+export const reqInfo = () => ajax('/info')
