@@ -69,7 +69,9 @@
       return {}
     },
     computed: {
-      ...mapState(['shopList'])
+      ...mapState({
+        shopList: state => state.msite.shopList
+      })
     },
     mounted () {
       this.$store.dispatch('getShopList')

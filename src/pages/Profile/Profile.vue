@@ -103,7 +103,9 @@
   export default {
     name: 'Profile',
     computed: {
-      ...mapState(['user'])
+      ...mapState({
+        user: state => state.user.user
+      })
 
     },
     methods: {

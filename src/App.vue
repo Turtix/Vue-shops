@@ -15,6 +15,7 @@ export default {
     FooterGuide
   },
   mounted () {
+    // vuex module  不用修改dispatch和commit  他们会去所有模块中查找
     // 获取地理位置信息
     this.$store.dispatch('getAddress')
     // 保证每次刷新页面时,都会得到保存的用户数据

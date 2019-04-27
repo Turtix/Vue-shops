@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store/store.js'
+import store from './store/index.js'
 import Header from './components/Header/Header'
 import Star from './components/Star/Star'
 import { Button } from 'mint-ui'

@@ -5,7 +5,7 @@ export default {
   计算属性  监听categories的变化,并改变categoriesList
    */
   categoriesList (state) {
-    let categories = state.categories
+    let categories = state.msite.categories
     const categoriesList = []
     const length = categories.length
     for (let i = length; i > 0; i = i - 8) {

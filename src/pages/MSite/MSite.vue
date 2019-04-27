@@ -54,7 +54,13 @@
       ShopList
     },
     computed: {
-      ...mapState(['address','categories','user']),
+      // state是总状态
+      // vuex模块化方式获取状态数据
+      ...mapState({
+        address: state => state.msite.address,
+        categories: state => state.msite.categories,
+        user: state => state.user.user,
+      }),
       ...mapGetters(['categoriesList'])
     },
     mounted() {
