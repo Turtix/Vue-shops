@@ -12,13 +12,18 @@
         <form>
           <div :class="{on: isShowSms}">
             <section class="login_message">
-              <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
+              <!-- validate验证 name="phone" 自定义校验规则:v-validate="xxx" -->
+              <input type="tel" maxlength="11" placeholder="手机号" v-model="phone" name="phone"  v-validate="'required|mobile'">
               <button :disabled="!isRightPhone" class="get_verification" :class="{right_phone_number: isRightPhone}" @click.prevent="sendCode">
                 {{computeTime>0 ? '已发送('+computeTime+')s': '获取验证码'}}
               </button>
+              <!-- validate验证 errors.has('phone') -->
+              <span style="color: red;" v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
             </section>
             <section class="login_verification">
-              <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
+              <!-- validate验证 name="code" 校验规则:v-validate="xxx" -->
+              <input type="tel" maxlength="8" placeholder="验证码" v-model="code" name="code" v-validate="{required:true,regex:/^.{6}$/}">
+              <span style="color: red;" v-show="errors.has('code')">{{ errors.first('code') }}</span>
             </section>
             <section class="login_hint">
               温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意
@@ -28,20 +33,24 @@
           <div :class="{on: !isShowSms}">
             <section>
               <section class="login_message">
-                <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
+                <!-- validate验证 name="name"   name是必须的v-validate=="'required'"  -->
+                <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name" name="name" v-validate="'required'">
+                <span style="color: red;" v-show="errors.has('name')">{{ errors.first('name') }}</span>
               </section>
               <section class="login_verification">
-                <input :type="isShowPwd ? 'text': 'password' " maxlength="8" placeholder="密码" v-model="pwd">
+                <input :type="isShowPwd ? 'text': 'password' " maxlength="8" placeholder="密码" v-model="pwd" name="pwd" v-validate="'required'">
                 <div class="switch_button " :class="isShowPwd ? 'on': 'off'"  @click="isShowPwd = !isShowPwd">
                   <div class="switch_circle" :class="{right: isShowPwd}"></div>
                   <span class="switch_text">{{isShowPwd ? 'abc': ''}}</span>
                 </div>
+                <span style="color: red;" v-show="errors.has('pwd')">{{ errors.first('pwd') }}</span>
               </section>
               <section class="login_message">
-                <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
+                <input type="text" maxlength="11" placeholder="验证码" v-model="captcha" name="captcha" v-validate="{required:true,regex:/^.{4}$/}">
                 <!-- 每次刷新页面,都会重新渲染,重新发送请求加载图片 -->
                 <!-- 还需要在每次点击图片时,重新发送请求获取图片 -->
                 <img ref="captcha" class="get_verification" src="http://localhost:5000/captcha" alt="captcha" @click="updateCaptcha">
+                <span style="color: red;" v-show="errors.has('captcha')">{{ errors.first('captcha') }}</span>
               </section>
             </section>
           </div>
@@ -113,27 +122,10 @@
 
         // 如果是短信登录
         if(isShowSms) {
-          if (!isRightPhone) {
-            return alert('请输入正确的手机号!')
-          }else if(! /^\d{6}$/.test(code)){
-            // 验证码必须是6位数字
-            return alert('请输入正确的短信验证码!')
-          }
-
           // 全部通过发送  短信验证码登录请求
           result = await reqLoginSms(phone,code)
         }else {
           // 如果是密码登录
-          if(!name.trim()){
-            // 用户名不能为空
-            return alert('请输入用户名!')
-          }else if(!pwd.trim()) {
-            // 用户名不能为空
-            return alert('请输入密码!')
-          }else if(!/^.{4}/.test(captcha)){
-            return alert('请输入正确的验证码!')
-          }
-
           // 全部通过发送  用户名密码登录请求
           result = await reqLoginPwd(name,pwd,captcha)
 

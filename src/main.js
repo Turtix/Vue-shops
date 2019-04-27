@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import Star from './components/Star/Star'
 import { Button } from 'mint-ui'
 import './mock/mockServer'
+import './validate'
 
 // 注册全局组件
 Vue.component('Header', Header)
