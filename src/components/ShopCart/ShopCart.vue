@@ -20,7 +20,7 @@
     </div>
     <!-- 购物车列表  -->
     <transition name="move">
-      <div class="shopcart-list" v-show="isShow">
+      <div class="shopcart-list" v-show="listShow">
       <div class="list-header">
         <h1 class="title">购物车</h1>
         <span class="empty">清空</span>
@@ -40,7 +40,7 @@
     </transition>
   </div>
   <transition name="fade">
-    <div class="list-mask" v-show="isShow" @click="toggleShow"></div>
+    <div class="list-mask" v-show="listShow" @click="toggleShow"></div>
   </transition>
 
 </div>
@@ -78,13 +78,21 @@
           return '去结算'
         }
       },
+      // 购物车列表和遮罩层是否显示 取决于isShow和购物车中的商品总数
+      listShow() {
+        if(!this.totalCount) {
+          // 商品总数为0 时不显示列表
+          this.isShow = false
+        }
+        return  this.isShow
+      }
     },
     methods: {
       toggleShow(){
         // 只有当购物车中有商品,才让进行切换
-        //if(this.shopCart.length > 0 ) {
+        if(this.totalCount > 0 ) {
           this.isShow = !this.isShow
-        //}
+        }
       }
     }
   }
