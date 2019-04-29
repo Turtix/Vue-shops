@@ -11,3 +11,5 @@ export const RESET_USER = 'reset_user' // 重置用户信息
 export const RECEIVE_GOODS = 'receive_goods' // 接收用户信息
 export const RECEIVE_RATINGS = 'receive_ratings' // 接收用户信息
 export const RECEIVE_INFO = 'receive_info' // 接收用户信息
+export const INCREMENT_FOOD_COUNT = 'increment_food_count' // 增加food的count
+export const DECREMENT_FOOD_COUNT = 'decrement_food_count' // 减少food的count

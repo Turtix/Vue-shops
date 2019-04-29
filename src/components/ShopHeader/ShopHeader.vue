@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-header">
+  <div class="shop-header" v-if="info">
     <nav class="shop-nav"
          :style="`background-image:url(${info.bgImg})`">
       <a class="back" @click="$router.back()">
