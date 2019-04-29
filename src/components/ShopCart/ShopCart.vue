@@ -48,6 +48,7 @@
 
 <script>
   import {mapState,mapGetters} from 'vuex'
+  import BScroll from 'better-scroll'
   export default {
     name: 'ShopCart',
     data () {
@@ -83,6 +84,21 @@
         if(!this.totalCount) {
           // 商品总数为0 时不显示列表
           this.isShow = false
+        }
+        // 列表将要显示
+        if(this.isShow){
+          /*
+            单例模式: 只有一个对象
+          */
+          this.$nextTick(()=>{
+            // 只有在对象不存在时才会创建
+            if(!this.scroll) {
+              this.scroll = new BScroll('.list-content')
+            }else {
+              // 存在, 刷新scroll
+              this.scroll.refresh()
+            }
+          })
         }
         return  this.isShow
       }
@@ -216,7 +232,7 @@
       .list-content
         padding: 0 18px
         max-height: 217px
-        /*overflow: hidden*/
+        overflow: hidden
         background: #fff
         .food
           position: relative
