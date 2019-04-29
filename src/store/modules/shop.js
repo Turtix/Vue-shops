@@ -70,7 +70,23 @@ const actions = {
   }
 }
 const getters = {
+  // 计算购物车中商品的总数量
+  totalCount(state) {
+    if (state.shopCart.length){
+      return state.shopCart.reduce((pre,curr,index)=>pre+=curr.count,0)
+    }else {
+      return 0
+    }
+  },
+  // 计算购物车中所有商品的总价格
+  totalPrice(state) {
+    if (state.shopCart.length){
+      return state.shopCart.reduce((pre,curr,index)=>pre+=curr.count*curr.price,0)
+    }else {
+      return 0
+    }
 
+  }
 }
 export default {
   state,

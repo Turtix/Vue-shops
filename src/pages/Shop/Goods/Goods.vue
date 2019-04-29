@@ -45,6 +45,7 @@
           </li>
         </ul>
       </div>
+      <ShopCart />
     </div>
     <Food ref="foodDetail" :food="food"/>
   </div>
@@ -54,11 +55,13 @@
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import Food from '../../../components/Food/Food'
+  import ShopCart from '../../../components/ShopCart/ShopCart'
 
   export default {
     name: 'Goods',
     components: {
-      Food
+      Food,
+      ShopCart
     },
     data() {
       return {
