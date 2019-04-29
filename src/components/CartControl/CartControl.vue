@@ -1,7 +1,10 @@
 <template>
   <div class="cartcontrol">
-    <div class="iconfont icon-remove_circle_outline" v-show="food.count"></div>
-    <div class="cart-count" @click.stop="updateFoodCount(false)" v-show="food.count">{{food.count}}</div>
+    <transition name="move">
+      <div class="iconfont icon-remove_circle_outline" @click.stop="updateFoodCount(false)" v-show="food.count"></div>
+    </transition>
+
+    <div class="cart-count" v-show="food.count">{{food.count}}</div>
     <div class="iconfont icon-add_circle" @click.stop="updateFoodCount(true)" ></div>
   </div>
 </template>
@@ -16,7 +19,6 @@
       // 更新加入购物车中商品的数量
       updateFoodCount(isAdd){
         const {food} = this
-
         this.$store.dispatch('updateFoodCount',{food,isAdd})
       }
     }
@@ -40,6 +42,11 @@
       line-height 24px
       font-size 24px
       color $green
+      &.move-enter-active,&.move-leave-active
+        transition all .5s
+      &.move-enter,&.move-leave-to
+        opacity 0
+        transform translateX(20px) rotate(180deg)
     .cart-count
       display: inline-block
       vertical-align: top

@@ -49,7 +49,6 @@ const mutations = {
   },
   /* 减少food的count数量 */
   [DECREMENT_FOOD_COUNT] (state, food) {
-    console.log(food.count)
     if(food.count) {
 
       // food 有值才能减
