@@ -20,7 +20,8 @@
           <li class="food-list-hook" v-for="(good,index) in goods" :key="index" >
             <h1 class="title">{{good.name}}</h1>
             <ul >
-              <li class="food-item bottom-border-1px" v-for="(food,index) in good.foods" :key="index" >
+              <li class="food-item bottom-border-1px" v-for="(food,index) in good.foods"
+                  :key="index" @click="showFood(food)">
                 <div class="icon">
                   <img width="57" height="57"
                        :src="food.icon">
@@ -36,7 +37,7 @@
                     <span class="now" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
                   <div class="cartcontrol-wrapper">
-                    <CartControl :food="food"/>
+                   <!-- <CartControl :food="food"/>-->
                   </div>
                 </div>
               </li>
@@ -45,6 +46,7 @@
         </ul>
       </div>
     </div>
+    <Food ref="foodDetail" :food="food"/>
   </div>
 </template>
 
@@ -52,15 +54,19 @@
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import CartControl from '../../../components/CartControl/CartControl'
+  import Food from '../../../components/Food/Food'
+
   export default {
     name: 'Goods',
     components: {
-      CartControl
+      CartControl,
+      Food
     },
     data() {
       return {
         scrollY: 0, //右侧Y轴滑动的坐标
         tops: [], // 包含右侧所有分类小列表的top值
+        food: {}, // 当前点击查看的food
       }
     },
     mounted() {
@@ -150,9 +156,16 @@
           this.rightScroll.scrollTo(0, -top,300)
         }
 
-      }
+      },
 
-      //
+      // 显示food详情的页面
+      showFood(food) {
+        // 更新当前被点击的food
+        this.food = food
+
+        // 显示food组件
+        this.$refs.foodDetail.toggleShow()
+      }
 
     },
     // 利用watch + nextTick 解决better-scroll不能滑动问题

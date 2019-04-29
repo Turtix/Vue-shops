@@ -48,7 +48,7 @@
 
     <!-- 所有公告 -->
     <transition name="fade">
-      <div class="shop-brief-modal" v-show="isShowBulletin"r>
+      <div class="shop-brief-modal" v-show="isShowBulletin">
         <div class="brief-modal-content">
           <h2 class="content-title">
           <span class="content-tag">
