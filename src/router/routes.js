@@ -8,6 +8,7 @@ import Profile from '../pages/Profile/Profile'*/
 将配置路由组件时: component配置的不是路由组件, 而是返回一个组件的函数,
               只有当请求对应的path时, 才会执行函数获取组件模块代码
  */
+//  目的:提高首屏加载的速度
 const MSite = () => import('../pages/MSite/MSite')
 const Search = () => import('../pages/Search/Search')
 const Order = () => import('../pages/Order/Order')

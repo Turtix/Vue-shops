@@ -2,7 +2,10 @@
   <div class="food" v-show="isShow">
     <div class="food-content">
       <div class="image-header">
-        <img :src="food.image">
+        <!--<img :src="food.image">-->
+        <!-- 实现大图懒加载 -->
+        <!-- v-if="isShow"用来解决图片懒加载后,会将上一次请求回来的图片缓存起来,再点击其他菜单显示的永远是这张图片 -->
+        <img v-lazy="food.image"  v-if="isShow">
         <p class="foodpanel-desc">{{food.info}}</p>
         <div class="back" @click="toggleShow">
           <i class="iconfont icon-arrow_left"></i>

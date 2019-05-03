@@ -9,6 +9,13 @@ import Split from './components/Split/Split'
 import { Button } from 'mint-ui'
 import './mock/mockServer'
 import './validate'
+// 引入图片懒加载的库
+import VueLazyload from 'vue-lazyload'
+import loading from './common/images/loading.gif'
+// 声明使用库
+Vue.use(VueLazyload, {
+  loading
+})
 
 // 注册全局组件
 Vue.component('Header', Header)
