@@ -12,7 +12,11 @@
           <router-link to="/shop/info">商家</router-link>
         </div>
       </div>
-      <router-view/>
+      <!-- 缓存路由组件: 上一个路由做了一些操作,切到下一个路由后再切回来,这些操作会被清空掉, 用keep-alive可以缓存路由 -->
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+
     </div>
 
 </template>
