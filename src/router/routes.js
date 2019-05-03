@@ -1,7 +1,19 @@
-import MSite from '../pages/MSite/MSite'
+/*import MSite from '../pages/MSite/MSite'
 import Search from '../pages/Search/Search'
 import Order from '../pages/Order/Order'
-import Profile from '../pages/Profile/Profile'
+import Profile from '../pages/Profile/Profile'*/
+
+/*
+使用import()加载一个模块: 被加载的模块会被拆分打包(code split: 代码分割)
+将配置路由组件时: component配置的不是路由组件, 而是返回一个组件的函数,
+              只有当请求对应的path时, 才会执行函数获取组件模块代码
+ */
+const MSite = () => import('../pages/MSite/MSite')
+const Search = () => import('../pages/Search/Search')
+const Order = () => import('../pages/Order/Order')
+const Profile = () => import('../pages/Profile/Profile')
+
+
 import Login from '../pages/Login/Login'
 import Shop from '../pages/Shop/Shop'
 import Goods from '../pages/Shop/Goods/Goods'
