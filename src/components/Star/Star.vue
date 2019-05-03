@@ -1,6 +1,6 @@
 <template>
   <div class="star" :class="'star-'+size">
-    <span class="star-item on" v-for="(sc,index) in scs" :key="index" :class="sc"></span>
+    <span class="star-item" v-for="(sc,index) in scs" :key="index" :class="sc"></span>
     <!--<span class="star-item on"></span>
     <span class="star-item on"></span>
     <span class="star-item half"></span>
@@ -23,22 +23,22 @@
         //小星星代码
         //计算小星星的数量
         const starNum = +this.starCount //+强制类型转换  也可以不加+ 后面会做隐式类型转换
-        const scs = []
+        const arr = []
         const on_star = Math.floor(starNum)  //会做隐式类型转换
         const half_star = Math.round(starNum) - on_star
         // 添加 小星星on类名
         for(let i = 0 ;i < on_star;i ++){
-          scs.push(CLASS_ON)
+          arr.push(CLASS_ON)
         }
         // 添加 小星星half类名
         if (half_star > 0) {
-          scs.push(CLASS_HALF)
+          arr.push(CLASS_HALF)
         }
         // 添加 小星星off类名
-        while (scs.length < 5) {
-          scs.push(CLASS_OFF)
+        while (arr.length < 5) {
+          arr.push(CLASS_OFF)
         }
-        return scs
+        return arr
       }
 
     }
