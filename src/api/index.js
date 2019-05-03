@@ -2,7 +2,10 @@
 import ajax from './ajax'
 
 // const BASE = 'http://localhost:5000'
-const BASE = '/api'
+// 开发环境
+// const BASE = '/api'
+// 生产环境
+const BASE = ''
 
 /* 根据经纬度获位置详情   param参数需要自己拼串 */
 export const reqAddress = (latitude, longitude) => ajax(BASE + `/position/${latitude},${longitude}`)
