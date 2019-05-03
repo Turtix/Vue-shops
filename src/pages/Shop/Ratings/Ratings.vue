@@ -55,7 +55,9 @@
               <div class="recommend">
                 <span class="iconfont " :class="rating.rateType === 0 ? 'icon-thumb_up' : 'icon-thumb_down' "></span>
               </div>
-              <div class="time">{{rating.rateTime}}</div>
+              <!-- 日期格式化  moment -->
+              <!--<div class="time">{{rating.rateTime | dateString}}</div>-->
+              <div class="time">{{rating.rateTime | date-format}}</div>
             </div>
           </li>
         </ul>
@@ -68,6 +70,7 @@
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import RatingsFilter from '../../../components/RatingsFilter/RatingsFilter'
+
   export default {
     name: 'Ratings',
     components: {

@@ -12,6 +12,9 @@ import './validate'
 // 引入图片懒加载的库
 import VueLazyload from 'vue-lazyload'
 import loading from './common/images/loading.gif'
+
+// 加载自定义过滤器  日期格式化
+import './filters'
 // 声明使用库
 Vue.use(VueLazyload, {
   loading
