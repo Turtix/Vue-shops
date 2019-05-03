@@ -36,6 +36,7 @@
       <RatingsFilter
         :onlyText="onlyText"
         :selectType="selectType"
+        :ratings="ratings"
       />
 
       <div class="rating-wrapper">

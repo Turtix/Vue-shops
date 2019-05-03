@@ -2,13 +2,13 @@
   <div class="ratingselect">
     <div class="rating-type border-1px">
       <span class="block" :class="{active: selectType===2}" @click="setType(2)">
-        全部<span class="count"  >1</span>
+        全部<span class="count"  >{{all.length}}</span>
       </span>
       <span class="block " :class="{active: selectType===0}" @click="setType(0)">
-        推荐<span class="count">1</span>
+        推荐<span class="count">{{folllow.length}}</span>
       </span>
       <span class="block" :class="{active: selectType===1}" @click="setType(1)">
-        吐槽<span class="count">0</span>
+        吐槽<span class="count">{{unFolllow.length}}</span>
       </span>
     </div>
     <div class="switch " :class="{on: onlyText}" @click="toggle">
@@ -25,7 +25,28 @@
       onlyText: Boolean,
       selectType: Number,
       setSelectType:  Function,
-      toggleOnlyText: Function
+      toggleOnlyText: Function,
+      ratings: Array
+    },
+    computed: {
+      all(){
+        return this.ratings.filter((rating)=>{
+          return !this.onlyText || rating.text.length > 0
+        })
+      },
+      folllow(){
+        // 计算过滤后的数组
+        return this.ratings.filter((rating)=>{
+          return (rating.rateType === 0) && (!this.onlyText || rating.text.length > 0)
+
+        })
+      },
+      unFolllow(){
+        // 计算过滤后的数组
+        return this.ratings.filter((rating)=>{
+          return (rating.rateType === 1) && (!this.onlyText || rating.text.length > 0)
+        })
+      }
     },
     data () {
       return {}
